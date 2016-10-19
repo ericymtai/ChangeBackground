@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Background colour change</title>
+  <style media="screen">
+    body {
+      background: #ffa;
+    }
+  </style>
+</head>
+<body>
+
+<ul id="messages"></ul>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+var socket = io();
+// Listen for the colour button from the server
+socket.on('colour change', function (msg) {
+  $('body').css('background', msg);
+      $('#messages').append($('<li>').text("You pressed " + msg + " button"));
+});
+socket.on('colour change2', function (msg) {
+  $('body').css('background', msg);
+    $('#messages').append($('<li>').text("You pressed " + msg + " button"));
+});
+socket.on('colour change3', function (msg) {
+  $('body').css('background', msg);
+      $('#messages').append($('<li>').text("You pressed " + msg + " button"));
+});
+socket.on('colour change4', function (msg) {
+  $('body').css('background', msg);
+      $('#messages').append($('<li>').text("You pressed " + msg + " button"));
+});
+
+</script>
+</body>
+</html>
