@@ -5,35 +5,37 @@
   <title>Background colour change</title>
   <style media="screen">
     body {
-      background: #ffa;
+      background: #ffe;
+    }
+    ul {
+      margin-top: 2em;
+    }
+    li {
+      width: 30%;
+      background: #111;
+      padding: .8em;
+      font-size: 1.6em;
+      list-style-type: none;
+      margin: 1% auto;
     }
   </style>
 </head>
 <body>
 
-<ul id="messages"></ul>
+  <ul id="messages"></ul>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-var socket = io();
-// Listen for the colour button from the server
-socket.on('colour change', function (msg) {
-  $('body').css('background', msg);
+
+    var socket = io();
+
+    // Listen for the colour button from the server
+    socket.on('colour change', function (msg) {
+      $('body').css('background', msg);
+      $('ul').css('color', msg);
       $('#messages').append($('<li>').text("You pressed " + msg + " button"));
-});
-socket.on('colour change2', function (msg) {
-  $('body').css('background', msg);
-    $('#messages').append($('<li>').text("You pressed " + msg + " button"));
-});
-socket.on('colour change3', function (msg) {
-  $('body').css('background', msg);
-      $('#messages').append($('<li>').text("You pressed " + msg + " button"));
-});
-socket.on('colour change4', function (msg) {
-  $('body').css('background', msg);
-      $('#messages').append($('<li>').text("You pressed " + msg + " button"));
-});
+    });
 
 </script>
 </body>

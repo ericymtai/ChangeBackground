@@ -5,61 +5,37 @@
     <title>Static Homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/stylesheet.css"> </head>
-
 <body>
+
     <h1>Changing Colour Background Button</h1>
 
-<div id="wrapper">
-    <form id="f1" action="">
-        <!-- <input id="m" autocomplete="off" /> -->
-        <input id="g" type="submit" class="red"  value=Cornsilk>
-    </form>
+    <div id="wrapper">
+            <input id="g" type="button" value=Coral>
 
-    <form id="f2"   action="">
-      <!-- <input id="m" autocomplete="off" /> -->
-        <input id="h" type="submit" class="green" value="Lavender">
-    </form>
+            <input id="h" type="button" value="Lavender">
 
-    <form id="f3"   action="">
-        <input id="i" type="submit" class="pink" value="LightSkyBlue">
+            <input id="i" type="button" value="LightSkyBlue">
 
-    </form>
-
-    <form id="f4"   action="">
-        <input id="j" type="submit" class="blue" value="GreenYellow">
-    </form>
-</div>
-
-
+            <input id="j" type="button" value="GreenYellow">
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var socket = io();
 
-        $('#f1').submit(function() {
-            socket.emit('colour change', $('#g').val());
+        $(document).on('click', 'input[type=button]',function(){
+          console.log($(this).val());
+          getValue($(this).val());
         });
+        function getValue(color) {
+              socket.emit('colour change',color);
+        }
 
-        $('#f2').submit(function() {
-            socket.emit('colour change2', $('#h').val());
-            // $('#h').val('');
-        });
-
-        $('#f3').submit(function() {
-            socket.emit('colour change3', $('#i').val());
-        });
-
-        $('#f4').submit(function() {
-            socket.emit('colour change4', $('#j').val());
-        });
-
-
-   $('#wrapper > form ').find("input[type='submit']").each(function(){
+   $('#wrapper').find("input[type='button']").each(function(){
         var x = $(this).val();
         $(this).css( "background",  x  );
   });
-
 
     </script>
 </body>

@@ -20,18 +20,6 @@ io.on('connection', function (socket) {
         io.emit('colour change', msg);
     });
 
-    socket.on('colour change2', function (msg) {
-        io.emit('colour change2', msg);
-    });
-
-    socket.on('colour change3', function (msg) {
-        io.emit('colour change3', msg);
-    });
-
-    socket.on('colour change4', function (msg) {
-        io.emit('colour change4', msg);
-    });
-
     socket.on('disconnect', function () {
         console.log('user disconnected');
     });
