@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="/css/stylesheet.css"> </head>
 <body>
 
-    <h1>Changing Colour Background Button</h1>
+    <h1>Select a Colour Background Changing Button</h1>
 
     <div id="wrapper">
-            <input id="g" type="button" value=Coral>
+            <input type="button" value=Coral>
 
-            <input id="h" type="button" value="Lavender">
+            <input type="button" value="Lavender">
 
-            <input id="i" type="button" value="LightSkyBlue">
+            <input type="button" value="LightSkyBlue">
 
-            <input id="j" type="button" value="GreenYellow">
+            <input type="button" value="GreenYellow">
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -25,18 +25,16 @@
         var socket = io();
 
         $(document).on('click', 'input[type=button]',function(){
-          console.log($(this).val());
           getValue($(this).val());
         });
         function getValue(color) {
               socket.emit('colour change',color);
         }
 
-   $('#wrapper').find("input[type='button']").each(function(){
-        var x = $(this).val();
-        $(this).css( "background",  x  );
-  });
-
+       $('#wrapper').find("input[type='button']").each(function(){
+            var x = $(this).val();
+            $(this).css( "background",  x  );
+       });
     </script>
 </body>
 
